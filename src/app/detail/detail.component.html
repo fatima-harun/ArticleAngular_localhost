@@ -1,0 +1,31 @@
+<div class="container mt-3">
+  <h1>Détails de l'article</h1>
+
+  <div *ngIf="post">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{ post.title }}</h5>
+        <p class="card-text">{{ post.body }}</p>
+        <a routerLink="/list" class="btn btn-secondary">Retour à la liste</a>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!post">
+    <p>Article non trouvé.</p>
+  </div>
+
+  <h2>Commentaires</h2>
+  <div *ngIf="comments.length > 0; else noComments">
+    <div *ngFor="let comment of comments" class="card mb-2">
+      <div class="card-body">
+        <h5 class="card-title">{{ comment.name }}</h5>
+        <p class="card-text">{{ comment.body }}</p>
+        <p><small class="text-muted">Par {{ comment.email }}</small></p>
+      </div>
+    </div>
+  </div>
+  <ng-template #noComments>
+    <p>Aucun commentaire trouvé.</p>
+  </ng-template>
+</div>

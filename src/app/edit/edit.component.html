@@ -1,0 +1,37 @@
+<!-- en cas de submit cad lorsqu'il soumet on fait appel à la fonction "submit" à qui on passe l'evenement $event -->
+<!-- <form [formGroup]="formGroup"  (submit)="submit($event)">
+    
+   
+    <div class="form-field">
+        <label for="title">Titre</label>
+        <input type="text" id="title" name="title" formControlName="title" [(ngModel)]="post.title">
+        <!-- @if(isFieldValid('title')){
+           <div class="error">Ce champ est requis</div>
+        } -->
+        <!-- </div> -->
+       
+ <!-- <div class="form-field">
+    <label for="body">Description</label>
+    <input type="text" id="body" name="body" formControlName="body" [(ngModel)]="post.body">
+    <!-- @if(isFieldValid('body')){
+       <div class="error">Ce champ est requis</div>
+    } -->
+    <!-- </div>
+ <button type="submit" [disabled]="formGroup.invalid" >Modifier</button>
+ 
+</form>   -->
+
+<form [formGroup]="formGroup" (submit)="submit($event)">
+    <div class="form-field">
+        <label for="title">Titre</label>
+        <input type="text" id="title" name="title" formControlName="title">
+        <div *ngIf="isFieldValid('title')" class="error">Ce champ est requis</div>
+    </div>
+       
+    <div class="form-field">
+        <label for="body">Description</label>
+        <input type="text" id="body" name="body" formControlName="body">
+        <div *ngIf="isFieldValid('body')" class="error">Ce champ est requis</div>
+    </div>
+    <button type="submit" [disabled]="formGroup.invalid">Modifier</button>
+</form>
